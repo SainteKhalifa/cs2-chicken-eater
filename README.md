@@ -7,75 +7,85 @@
 
 ## Français
 
-Plugin [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp) pour CS2 : on mange les poulets.
+Ce plugin [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp) pour CS2 permet aux joueurs de manger les poulets.
 
-### Fonctionnalités
+### Fonctionnement
 
-- **Poulet vivant** : viser un poulet de près et appuyer sur **E**. +20 PV par défaut, sans jamais
-  dépasser 100 ; un joueur déjà à 100 PV ou plus ne gagne rien (et ne perd rien s'il est au-dessus).
-  Le poulet meurt comme quand on le tue : son cri de mort et ses plumes, plus une tache de sang au sol.
-- **Poulet rôti** : un poulet tué par le feu d'une molotov ou d'une incendiaire laisse un poulet rôti
-  au sol pendant 60 s. Le manger avec **E** donne +50 PV par défaut, avec le même plafond, sans sang.
-- Les sons d'un repas ne sont entendus que par les joueurs proches (200 unités, environ 5 m).
-- Un message dans le chat, pour celui qui mange seulement.
+**Poulet vivant**
+
+- Le joueur s'approche d'un poulet, le vise et appuie sur **E** pour le manger.
+- Il gagne 20 PV (réglable), sans jamais dépasser 100 PV.
+- S'il a déjà 100 PV ou plus, il ne gagne rien, mais il ne perd rien non plus.
+- Le poulet meurt comme quand on le tue : il pousse son cri de mort, ses plumes volent et une tache de sang reste au sol.
+
+**Poulet rôti**
+
+- Un poulet tué par le feu d'une molotov ou d'une grenade incendiaire laisse un poulet rôti au sol.
+- Le poulet rôti reste au sol pendant 60 secondes.
+- Le joueur le mange de la même façon, avec **E**. Il gagne 50 PV (réglable), toujours sans dépasser 100 PV.
+- Manger un poulet rôti ne laisse pas de sang.
+
+**Sons et messages**
+
+- Seuls les joueurs proches entendent le bruit du repas : à moins de 200 unités, soit environ 5 mètres.
+- Le joueur qui mange reçoit un message dans le chat, par exemple : « Miam, un poulet cru ! +20 PV (87 PV) ».
 
 ### Commandes
 
-Réservées aux admins (`@css/generic`) :
+Ces commandes sont réservées aux admins (droit `@css/generic`). Elles servent surtout à tester le plugin sur une map sans poulets.
 
-| Commande | Effet |
+| Commande | Ce qu'elle fait |
 |---|---|
-| `!sp` | pose un poulet vivant devant soi |
-| `!spc` | pose un poulet rôti devant soi |
+| `!sp` | Fait apparaître un poulet vivant devant soi. |
+| `!spc` | Fait apparaître un poulet rôti devant soi. |
 
 ### Installation
 
-1. Télécharger `cs2-chicken-eater-<version>.zip` dans les [releases](../../releases).
-2. Extraire le dossier `ChickenEater` dans `game/csgo/addons/counterstrikesharp/plugins/`.
-3. Redémarrer le serveur (ou changer de map) : les modèles et effets sont préchargés au chargement de
-   la map.
+1. Télécharger le fichier `cs2-chicken-eater-<version>.zip` sur la page des [releases](../../releases).
+2. Copier le dossier `ChickenEater` du zip dans `game/csgo/addons/counterstrikesharp/plugins/`.
+3. Redémarrer le serveur ou changer de map. Le plugin a besoin d'un chargement de map pour préparer le modèle du poulet rôti et les effets de sang.
 
 ### Configuration
 
-`game/csgo/addons/counterstrikesharp/configs/plugins/ChickenEater/ChickenEater.json`, créé au premier
-chargement. Les PV donnés par chaque poulet se règlent ici :
+Le fichier de configuration est créé automatiquement au premier démarrage du plugin :
 
-| Clé | Défaut | Rôle |
+`game/csgo/addons/counterstrikesharp/configs/plugins/ChickenEater/ChickenEater.json`
+
+C'est dans ce fichier qu'on choisit le nombre de PV donnés par chaque poulet.
+
+| Réglage | Valeur par défaut | À quoi il sert |
 |---|---|---|
-| `live_chicken_health` | `20` | PV donnés par un poulet vivant |
-| `cooked_chicken_health` | `50` | PV donnés par un poulet rôti |
-| `max_health` | `100` | plafond : jamais au-dessus, rien à partir de là |
-| `language` | `fr` | `fr` ou `en` |
-| `eat_distance` | `100` | portée depuis les yeux du joueur (unités du jeu) |
-| `hearing_distance` | `200` | seuls les joueurs à cette distance entendent un repas |
-| `live_eat_sounds` | `["Chicken.Death"]` | sons joués par le poulet mangé vivant |
-| `cooked_eat_sounds` | `["Bounce.Flesh"]` | sons joués par le joueur qui mange un poulet rôti |
-| `blood_effect` | `particles/blood_impact/blood_impact_high_ground_decal.vpcf` | tache de sang au sol |
-| `feathers_effect` | `particles/critters/chicken/chicken_gone_feathers.vpcf` | plumes (`""` = aucune) |
-| `blood_lifetime_seconds` | `30` | durée des effets de sang et de plumes |
-| `cooked_chicken_model` | `models/chicken/chicken_roasted.vmdl` | modèle du poulet rôti |
-| `cooked_chicken_lifetime_seconds` | `60` | durée du poulet rôti au sol (`0` = jusqu'à la fin de la manche) |
-| `chat_messages` | `true` | message dans le chat à chaque repas |
+| `live_chicken_health` | `20` | Nombre de PV gagnés en mangeant un poulet vivant. |
+| `cooked_chicken_health` | `50` | Nombre de PV gagnés en mangeant un poulet rôti. |
+| `max_health` | `100` | Nombre maximum de PV. Manger ne fait jamais dépasser cette valeur, et un joueur qui l'a déjà atteinte ne gagne rien. |
+| `language` | `fr` | Langue des messages du chat : `fr` pour le français, `en` pour l'anglais. |
+| `eat_distance` | `100` | Distance maximale entre le joueur et le poulet pour pouvoir le manger, en unités du jeu. |
+| `hearing_distance` | `200` | Distance jusqu'à laquelle les autres joueurs entendent le repas, en unités du jeu (200 unités font environ 5 mètres). |
+| `live_eat_sounds` | `["Chicken.Death"]` | Sons joués quand on mange un poulet vivant. Par défaut, c'est le cri de mort du poulet. |
+| `cooked_eat_sounds` | `["Bounce.Flesh"]` | Sons joués quand on mange un poulet rôti. |
+| `blood_effect` | `particles/blood_impact/blood_impact_high_ground_decal.vpcf` | Effet utilisé pour la tache de sang au sol. |
+| `feathers_effect` | `particles/critters/chicken/chicken_gone_feathers.vpcf` | Effet utilisé pour les plumes. Mettre `""` pour ne pas afficher de plumes. |
+| `blood_lifetime_seconds` | `30` | Durée d'affichage du sang et des plumes, en secondes. |
+| `cooked_chicken_model` | `models/chicken/chicken_roasted.vmdl` | Modèle 3D utilisé pour le poulet rôti. |
+| `cooked_chicken_lifetime_seconds` | `60` | Temps pendant lequel le poulet rôti reste au sol, en secondes. Mettre `0` pour qu'il reste jusqu'à la fin de la manche. |
+| `chat_messages` | `true` | Affiche un message dans le chat quand un joueur mange un poulet. Mettre `false` pour ne plus afficher ces messages. |
 
-Après une modification : `css_plugins reload ChickenEater`.
+Après avoir modifié le fichier, taper `css_plugins reload ChickenEater` dans la console du serveur pour appliquer les changements.
 
-### Notes
+### Bon à savoir
 
-- `Chicken.Death` reste muet quand c'est un joueur qui le joue : le poulet mangé le joue donc lui-même,
-  caché pendant 1,5 s le temps de son cri, puis retiré.
-- Chargé en cours de map (première installation), le plugin laisse manger les poulets vivants mais
-  attend la map suivante pour le sang, le poulet rôti et les commandes : un modèle non préchargé peut
-  faire planter le serveur. Un simple rechargement du plugin, lui, garde tout actif.
+- Le cri de mort du poulet ne peut être joué que par le poulet lui-même. Quand un joueur le mange, le poulet devient donc invisible, puis disparaît au bout d'une seconde et demie, le temps de son cri.
+- À la toute première installation, si le plugin est chargé en pleine partie, le sang, le poulet rôti et les commandes ne marchent qu'à partir de la map suivante. C'est une sécurité : utiliser un modèle qui n'a pas été préparé peut faire planter le serveur. Recharger le plugin plus tard ne pose pas ce problème.
 
-### Compiler soi-même
+### Compiler le plugin soi-même
 
 ```bash
 dotnet publish -c Release
 ```
 
-Le plugin se trouve dans `src/bin/Release/net10.0/publish/`. Il est compilé contre CounterStrikeSharp
-`1.0.376`, épinglé dans `src/ChickenEater.csproj`. Pousser un tag égal à la version de `src/Version.cs`
-publie la release sur GitHub.
+Le plugin compilé se trouve dans `src/bin/Release/net10.0/publish/`. Il est compilé pour CounterStrikeSharp `1.0.376`, une version fixée dans `src/ChickenEater.csproj`.
+
+Pour publier une nouvelle version sur GitHub, il suffit de pousser un tag qui porte le même numéro que dans `src/Version.cs`.
 
 ---
 
