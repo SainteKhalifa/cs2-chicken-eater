@@ -1,0 +1,10 @@
+{
+  "prefix": "{lime}[Chicken]{default}",
+  "ateLive": "Yum, a raw chicken! {green}+{0} HP{default} ({1} HP).",
+  "ateCooked": "Delicious roast chicken! {green}+{0} HP{default} ({1} HP).",
+  "ateFull": "Yum… but you are not hungry anymore: already {1} HP.",
+  "spawned": "Chicken placed in front of you.",
+  "spawnedCooked": "Roast chicken placed in front of you.",
+  "spawnFailed": "Could not spawn the chicken here.",
+  "notReady": "Change the map first: the roast chicken and the blood are not loaded yet."
+}

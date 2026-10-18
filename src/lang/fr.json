@@ -1,0 +1,10 @@
+{
+  "prefix": "{lime}[Poulet]{default}",
+  "ateLive": "Miam, un poulet cru ! {green}+{0} PV{default} ({1} PV).",
+  "ateCooked": "Délicieux poulet rôti ! {green}+{0} PV{default} ({1} PV).",
+  "ateFull": "Miam… mais tu n'as plus faim : déjà {1} PV.",
+  "spawned": "Poulet posé devant toi.",
+  "spawnedCooked": "Poulet rôti posé devant toi.",
+  "spawnFailed": "Impossible de faire apparaître le poulet ici.",
+  "notReady": "Change de map d'abord : le poulet rôti et le sang ne sont pas encore chargés."
+}
