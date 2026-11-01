@@ -1,5 +1,5 @@
 {
-  "prefix": "{lime}[Chicken]{default}",
+  "prefix": "{gold}[ChickenEater]{default}",
   "ateLive": "Yum, a raw chicken! {green}+{0} HP{default} ({1} HP).",
   "ateCooked": "Delicious roast chicken! {green}+{0} HP{default} ({1} HP).",
   "ateFull": "Yum… but you are not hungry anymore: already {1} HP.",
